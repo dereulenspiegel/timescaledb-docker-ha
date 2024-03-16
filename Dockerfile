@@ -151,6 +151,8 @@ ENV BUILD_PACKAGES="binutils cmake devscripts equivs gcc git gpg gpg-agent libc-
 RUN apt-get install -y ${BUILD_PACKAGES}
 RUN apt-mark auto ${BUILD_PACKAGES}
 
+RUN apt-get install -y --allow-downgrades tzdata="2022a-*"
+
 # We install the PostgreSQL build dependencies and mark the installed packages as auto-installed,
 RUN set -eux; \
     for pg in ${PG_VERSIONS}; do \
